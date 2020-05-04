@@ -95,23 +95,29 @@ myList.addEventListener("click", displayList);
 })();
 
 function addTitle(title) {
-    // check if the current title is arealdy in the list
-    if (list.some(function (currentTitle) {
-            return currentTitle.id === title.id
-        })) {
-        console.log(`"${title.name}" is already in your list.`);
+
+
+    // check to localstorage has titles
+    let myList;
+    if (localStorage.getItem("myList") === null) {
+        myList = [];
     } else {
-        list.push(title);
-        // add list to local storage
-        localStorage.setItem("myList", JSON.stringify(title));
-        console.log(`"${title.name}" was added to your list`);
+        myList = JSON.parse(localStorage.getItem("myList"))
     }
+    // push title to myList array
+    myList.push(title);
+
+    // add list to local storage
+    localStorage.setItem("myList", JSON.stringify(myList));
+    console.log(`"${title.name}" was added to your list`);
 }
 
 function displayList() {
     console.log("MY LIST");
 
-    list.forEach(function (title) {
+    const allTitles = JSON.parse(localStorage.getItem("myList"));
+    //console.log(allTitles);
+    allTitles.forEach(function (title) {
         console.log("- " + title.name);
     })
 
