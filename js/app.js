@@ -102,6 +102,8 @@ function addTitle(title) {
         console.log(`"${title.name}" is already in your list.`);
     } else {
         list.push(title);
+        // add list to local storage
+        localStorage.setItem("myList", JSON.stringify(title));
         console.log(`"${title.name}" was added to your list`);
     }
 }
