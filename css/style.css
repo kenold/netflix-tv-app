@@ -251,7 +251,7 @@ nav {
   .title {
     padding: 5px 80px 10px 80px;
   }
-  .title-body {
+  .title-synopsis p {
     width: 40%;
   }
   .button-item {
