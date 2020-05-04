@@ -14,7 +14,7 @@ const titles = [{
         status: "New",
         poster: "the-half-of-it_poster.jpg",
         background: "the-half-of-it_bg.jpg",
-        logo: "https://res.cloudinary.com/dkwgkbgqq/image/upload/v1588519157/assets/the-half-of-it-logo.webp"
+        logo: "./img/the-half-of-it-logo.png"
     },
     {
         id: 2,
