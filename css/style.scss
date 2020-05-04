@@ -31,6 +31,10 @@ button {
     &:focus {
         outline: none;
     }
+
+    &::-moz-focus-inner {
+        border: 0;
+    }
 }
 
 i {
@@ -50,6 +54,10 @@ nav {
 
     &:hover {
         border-color: #fff;
+    }
+
+    &:focus {
+        outline: 1px solid red;
     }
 }
 
@@ -247,7 +255,7 @@ nav {
         &-item {
             margin-bottom: 15px;
             padding: 10px;
-            width: 80%;
+            width: 25%;
             transition: outline 200ms ease-in;
         }
     }

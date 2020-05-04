@@ -35,6 +35,10 @@ button:focus {
   outline: none;
 }
 
+button::-moz-focus-inner {
+  border: 0;
+}
+
 i {
   display: block;
 }
@@ -54,6 +58,10 @@ nav {
 
 .nav-item:hover {
   border-color: #fff;
+}
+
+.nav-item:focus {
+  outline: 1px solid red;
 }
 
 .screen-container {
@@ -257,7 +265,7 @@ nav {
   .button-item {
     margin-bottom: 15px;
     padding: 10px;
-    width: 80%;
+    width: 25%;
     -webkit-transition: outline 200ms ease-in;
     transition: outline 200ms ease-in;
   }
