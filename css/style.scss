@@ -62,8 +62,6 @@ nav {
 }
 
 .screen-container {
-    background: url(../img/the-half-of-it-bg.jpg) no-repeat right center;
-    background-size: cover;
     position: relative;
 
     &::after {
@@ -106,10 +104,10 @@ nav {
         }
 
         .mpaa {
-            background-color: rgba(75, 75, 75, 0.6);
-            border: 1px solid $color-light;
+            background-color: #232327;
+            border-radius: 2px;
             font-weight: 600;
-            padding: 2px 4px;
+            padding: 2px 8px;
         }
     }
 
