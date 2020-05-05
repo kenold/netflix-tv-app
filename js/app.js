@@ -1,7 +1,9 @@
+// TODO: add ./img in DOM
 const titles = [{
         id: 1,
         name: "The Half of it",
         year: 2020,
+        type: "Movie",
         mpaa: "PG-13",
         duration: "1h 45m",
         popularity: 9,
@@ -10,32 +12,34 @@ const titles = [{
         director: "Alice Wu",
         genres: "LGBTQ Movies, Teen Movies",
         status: "New",
-        poster: "the-half-of-it_poster.jpg",
-        background: "the-half-of-it_bg.jpg",
+        poster: "the-half-of-it-poster.jpg",
+        background: "the-half-of-it-bg.jpg",
         logo: "./img/the-half-of-it-logo.png"
     },
     {
         id: 2,
-        name: "Scary Movie",
-        year: 2010,
-        mpaa: "R",
+        name: "Ozark",
+        year: 2017,
+        type: "Series",
+        seasons: 3,
+        mpaa: "TV-MA",
         duration: "1h 20m",
         popularity: 1,
-        synopsis: "Movie number 2",
-        cast: "Leah Lewis, Daniel Diemer",
-        director: "Alice Wu",
-        genres: "LGBTQ Movies, Teen Movies",
-        status: "New",
-        poster: "the-half-of-it_poster.jpg",
-        background: "the-half-of-it_bg.jpg",
-        logo: "https://res.cloudinary.com/dkwgkbgqq/image/upload/v1588519157/assets/the-half-of-it-logo.webp"
+        synopsis: "A financial adviser drags his family from Chicago to the Missouri Ozarks, where he must launder $500 million in five years to appease a drug boss.",
+        cast: "Jason Bateman, Laura Linney, Sofia Hublitz",
+        director: "Bill Dubuque, Mark Williams",
+        genres: "TV Dramas",
+        status: "",
+        poster: "ozark-poster.jpg",
+        background: "ozark-bg.png",
+        logo: "./img/ozark-logo.png"
     }
 ];
 
 const myList = document.querySelector("#my-list");
-const addToList = document.querySelector("#btn-add");
+const addToListButton = document.querySelector("#btn-add");
 
-// DOM titleInfo to save to list array
+// get DOM elements
 const titleLogo = document.querySelector(".title-logo-img");
 const titleName = titleLogo.title;
 const titleBg = document.querySelector(".screen-container");
@@ -64,6 +68,11 @@ myList.addEventListener("click", displayList);
     // current title
     const title = currentTitleObject;
 
+    // SET DOM elements
+    titleBg.style.background = `url(./img/${title.background}) no-repeat right center`;
+    titleBg.style.backgroundSize = "cover";
+    console.log(titleBg)
+
     // title logo
     titleLogo.src = title.logo;
     titleLogo.title = title.name;
@@ -84,13 +93,14 @@ myList.addEventListener("click", displayList);
     titleDirector.innerText = title.director
     titleGenres.innerText = title.genres;
 
-    addToList.addEventListener("click", function (e) {
-        addTitle(title);
+    addToListButton.addEventListener("click", function (e) {
+        // pass the current title object to addToList function
+        addToList(title);
     });
 
 })();
 
-function addTitle(title) {
+function addToList(title) {
 
 
     // check to localstorage has titles
