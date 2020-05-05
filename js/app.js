@@ -1,5 +1,3 @@
-// WORK IN PROGRESS
-
 const titles = [{
         id: 1,
         name: "The Half of it",
@@ -33,8 +31,6 @@ const titles = [{
         logo: "https://res.cloudinary.com/dkwgkbgqq/image/upload/v1588519157/assets/the-half-of-it-logo.webp"
     }
 ];
-
-const list = [];
 
 const myList = document.querySelector("#my-list");
 const addToList = document.querySelector("#btn-add");
