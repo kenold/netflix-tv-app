@@ -9,7 +9,7 @@ const titles = [{
         popularity: 9,
         synopsis: "When smart but cash-strapped teen Ellie Chu agrees to write a love letter for a jock, she doesn't expect to become his friend — or fall for his crush.",
         cast: "Leah Lewis, Daniel Diemer",
-        director: "Alice Wu",
+        crew: "Alice Wu",
         genres: "LGBTQ Movies, Teen Movies",
         status: "New",
         poster: "the-half-of-it-poster.jpg",
@@ -27,7 +27,7 @@ const titles = [{
         popularity: 1,
         synopsis: "A financial adviser drags his family from Chicago to the Missouri Ozarks, where he must launder $500 million in five years to appease a drug boss.",
         cast: "Jason Bateman, Laura Linney, Sofia Hublitz",
-        director: "Bill Dubuque, Mark Williams",
+        crew: "Bill Dubuque, Mark Williams",
         genres: "TV Dramas",
         status: "",
         poster: "ozark-poster.jpg",
@@ -50,7 +50,9 @@ const titleDuration = document.querySelector(".duration");
 const titlePopularity = document.querySelector(".popularity-number");
 const titleSynopsis = document.querySelector(".synopsis");
 const titleCast = document.querySelector(".cast");
-const titleDirector = document.querySelector(".director");
+const titleCrew = document.querySelector(".crew");
+// crewHeading Director or Creator
+const titleCrewHeading = document.querySelector('.crew-info .heading')
 const titleGenres = document.querySelector(".genres");
 
 // events
@@ -71,7 +73,6 @@ myList.addEventListener("click", displayList);
     // SET DOM elements
     titleBg.style.background = `url(./img/${title.background}) no-repeat right center`;
     titleBg.style.backgroundSize = "cover";
-    console.log(titleBg)
 
     // title logo
     titleLogo.src = title.logo;
@@ -82,7 +83,9 @@ myList.addEventListener("click", displayList);
     titleStatus.innerText = title.status;
     titleYear.innerText = title.year;
     titleMpaa.innerText = title.mpaa;
-    titleDuration.innerText = title.duration;
+
+    const duration = title.type === "Movie" ? title.duration : (title.seasons + " Seasons");
+    titleDuration.innerText = duration;
 
     // title popularity
     titlePopularity.innerText = title.popularity;
@@ -90,7 +93,10 @@ myList.addEventListener("click", displayList);
     // title synopsis
     titleSynopsis.innerText = title.synopsis;
     titleCast.innerText = title.cast;
-    titleDirector.innerText = title.director
+
+    const heading = title.type === "Movie" ? "Direcor: " : "Creators: ";
+    titleCrewHeading.innerText = heading;
+    titleCrew.innerText = title.crew
     titleGenres.innerText = title.genres;
 
     addToListButton.addEventListener("click", function (e) {
