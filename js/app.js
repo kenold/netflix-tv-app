@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // *** FETCH API ***
     async function fetchData() {
         const resp = await fetch('https://api.npoint.io/cf0f54443dac99ea2286')
-        let data = await resp.json();
-        data = renderTitles(data.titles);
+        let json = await resp.json();
+        json = renderTitles(json.titles);
     }
 
     function renderTitles(titles) {
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // genres
         titleGenres.innerText = title.genres;
-    }
+    } // end renderTitles()
     fetchData();
 
     //  *** EVENT HANDLERS ***
