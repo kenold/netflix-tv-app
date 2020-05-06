@@ -14,7 +14,7 @@ const titles = [{
         status: "New",
         poster: "the-half-of-it-poster.jpg",
         background: "the-half-of-it-bg.jpg",
-        logo: "./img/the-half-of-it-logo.png"
+        logo: "the-half-of-it-logo.png"
     },
     {
         id: 2,
@@ -32,7 +32,7 @@ const titles = [{
         status: "98% Match",
         poster: "ozark-poster.jpg",
         background: "ozark-bg.png",
-        logo: "./img/ozark-logo.png"
+        logo: "ozark-logo.png"
     }
 ];
 
@@ -70,13 +70,14 @@ myList.addEventListener("click", displayList);
     // current title
     const title = currentTitleObject;
 
-    // SET DOM elements
+    // SET DOM VALUES
+
+    // .screen-container div
     titleBg.style.background = `url(./img/${title.background}) no-repeat right center`;
     titleBg.style.backgroundSize = "cover";
 
-    // title logo
-    titleLogo.src = title.logo;
-    titleLogo.title = title.name;
+    // title logo image
+    titleLogo.src = `./img/${title.logo}`;
     titleLogo.alt = title.name;
 
     // title meta
@@ -92,7 +93,6 @@ myList.addEventListener("click", displayList);
 
     // title synopsis
     titleSynopsis.innerText = title.synopsis;
-    //titleCast.innerText = title.cast;
 
     /*
         if the title is a movie, set the crew heading to "Director"
@@ -104,19 +104,8 @@ myList.addEventListener("click", displayList);
         pluralize("Creator", title.crew);
     titleCrewHeading.innerText = heading;
 
-    // TODO: combine these 2?
-    // loop through each crew
-    // title.cast.forEach(function (person) {
-    //     titleCast.innerText += person;
-    // });
     titleCast.innerText = title.cast.join(", ");
     titleCrew.innerText = title.crew.join(", ");
-
-    // loop through each crew
-    // title.crew.forEach(function (person) {
-    //     titleCrew.innerText += person;
-    // });
-
 
     titleGenres.innerText = title.genres;
 
