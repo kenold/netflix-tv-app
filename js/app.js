@@ -106,14 +106,16 @@ myList.addEventListener("click", displayList);
 
     // TODO: combine these 2?
     // loop through each crew
-    title.cast.forEach(function (person) {
-        titleCast.innerText += person;
-    });
+    // title.cast.forEach(function (person) {
+    //     titleCast.innerText += person;
+    // });
+    titleCast.innerText = title.cast.join(", ");
+    titleCrew.innerText = title.crew.join(", ");
 
     // loop through each crew
-    title.crew.forEach(function (person) {
-        titleCrew.innerText += person;
-    });
+    // title.crew.forEach(function (person) {
+    //     titleCrew.innerText += person;
+    // });
 
 
     titleGenres.innerText = title.genres;
