@@ -29,7 +29,7 @@ const titles = [{
         cast: ["Jason Bateman", "Laura Linney", "Sofia Hublitz"],
         crew: ["Bill Dubuque", "Mark Williams"],
         genres: "TV Dramas",
-        status: "",
+        status: "98% Match",
         poster: "ozark-poster.jpg",
         background: "ozark-bg.png",
         logo: "./img/ozark-logo.png"
