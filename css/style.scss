@@ -258,3 +258,11 @@ nav {
         }
     }
 }
+
+@media (min-width: 1015px) {
+    .button {
+        &-item {
+            width: 35%;
+        }
+    }
+}
