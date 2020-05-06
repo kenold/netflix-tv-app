@@ -8,7 +8,7 @@ const titles = [{
         duration: "1h 45m",
         popularity: 9,
         synopsis: "When smart but cash-strapped teen Ellie Chu agrees to write a love letter for a jock, she doesn't expect to become his friend — or fall for his crush.",
-        cast: "Leah Lewis, Daniel Diemer",
+        cast: ["Leah Lewis", "Daniel Diemer"],
         crew: ["Alice Wu"],
         genres: "LGBTQ Movies, Teen Movies",
         status: "New",
@@ -26,7 +26,7 @@ const titles = [{
         duration: "1h 20m",
         popularity: 1,
         synopsis: "A financial adviser drags his family from Chicago to the Missouri Ozarks, where he must launder $500 million in five years to appease a drug boss.",
-        cast: "Jason Bateman, Laura Linney, Sofia Hublitz",
+        cast: ["Jason Bateman", "Laura Linney", "Sofia Hublitz"],
         crew: ["Bill Dubuque", "Mark Williams"],
         genres: "TV Dramas",
         status: "",
@@ -92,15 +92,25 @@ myList.addEventListener("click", displayList);
 
     // title synopsis
     titleSynopsis.innerText = title.synopsis;
-    titleCast.innerText = title.cast;
+    //titleCast.innerText = title.cast;
 
-    // singular/plural
-    //const crewPlurality = title.crew.length > 1 ? "Creators: " : "Creator: ";
-    const creatorPlurality = title.crew.length > 1 ? "Creators: " : "Creator: ";
-    const heading = title.type === "Movie" ? "Director: " : creatorPlurality;
+    /*
+        if the title is a movie, set the crew heading to "Director"
+        else set the heading to "Creator"
+        ...but call the pluralize function
+    */
+    const heading = title.type === "Movie" ?
+        pluralize("Director", title.crew) :
+        pluralize("Creator", title.crew);
     titleCrewHeading.innerText = heading;
 
-    // call function to form people list
+    // TODO: combine these 2?
+    // loop through each crew
+    title.cast.forEach(function (person) {
+        titleCast.innerText += person;
+    });
+
+    // loop through each crew
     title.crew.forEach(function (person) {
         titleCrew.innerText += person;
     });
@@ -112,6 +122,21 @@ myList.addEventListener("click", displayList);
         // pass the current title object to addToList function
         addToList(title);
     });
+
+    // FUNCTIONS
+    /*
+        pluralize() add the 's' suffix to the
+        "Director" and "Creator" headings if the array lenght is > 1
+        ex: pluralize("Creator", title.crew)
+        - title.crew is an array
+    */
+    function pluralize(peopleHeading, people) {
+        if (people.length > 1) {
+            return peopleHeading + "s: ";
+        } else {
+            return peopleHeading + ": ";
+        }
+    }
 
 })();
 
