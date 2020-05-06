@@ -9,7 +9,7 @@ const titles = [{
         popularity: 9,
         synopsis: "When smart but cash-strapped teen Ellie Chu agrees to write a love letter for a jock, she doesn't expect to become his friend — or fall for his crush.",
         cast: "Leah Lewis, Daniel Diemer",
-        crew: "Alice Wu",
+        crew: ["Alice Wu"],
         genres: "LGBTQ Movies, Teen Movies",
         status: "New",
         poster: "the-half-of-it-poster.jpg",
@@ -27,7 +27,7 @@ const titles = [{
         popularity: 1,
         synopsis: "A financial adviser drags his family from Chicago to the Missouri Ozarks, where he must launder $500 million in five years to appease a drug boss.",
         cast: "Jason Bateman, Laura Linney, Sofia Hublitz",
-        crew: "Bill Dubuque, Mark Williams",
+        crew: ["Bill Dubuque", "Mark Williams"],
         genres: "TV Dramas",
         status: "",
         poster: "ozark-poster.jpg",
@@ -94,9 +94,18 @@ myList.addEventListener("click", displayList);
     titleSynopsis.innerText = title.synopsis;
     titleCast.innerText = title.cast;
 
-    const heading = title.type === "Movie" ? "Direcor: " : "Creators: ";
+    // singular/plural
+    //const crewPlurality = title.crew.length > 1 ? "Creators: " : "Creator: ";
+    const creatorPlurality = title.crew.length > 1 ? "Creators: " : "Creator: ";
+    const heading = title.type === "Movie" ? "Director: " : creatorPlurality;
     titleCrewHeading.innerText = heading;
-    titleCrew.innerText = title.crew
+
+    // call function to form people list
+    title.crew.forEach(function (person) {
+        titleCrew.innerText += person;
+    });
+
+
     titleGenres.innerText = title.genres;
 
     addToListButton.addEventListener("click", function (e) {
@@ -128,7 +137,6 @@ function displayList() {
     console.log("MY LIST");
 
     const allTitles = JSON.parse(localStorage.getItem("myList"));
-    //console.log(allTitles);
     allTitles.forEach(function (title) {
         console.log("- " + title.name);
     })
