@@ -51,97 +51,93 @@ const titlePopularity = document.querySelector(".popularity-number");
 const titleSynopsis = document.querySelector(".synopsis");
 const titleCast = document.querySelector(".cast");
 const titleCrew = document.querySelector(".crew");
-// crewHeading Director or Creator
+// crewHeading: Director or Creator
 const titleCrewHeading = document.querySelector('.crew-info .heading')
 const titleGenres = document.querySelector(".genres");
 
-// events
+
+// get a random index from the titles array
+const randIndex = Math.floor(Math.random() * Math.floor(titles.length));
+
+// save the chosen title in the title variable
+const title = titles[randIndex];
+
+// *** SET DOM VALUES ***
+
+// .screen-container div
+titleBg.style.background = `url(./img/${title.background}) no-repeat right center`;
+titleBg.style.backgroundSize = "cover";
+
+// logo image
+titleLogo.src = `./img/${title.logo}`;
+titleLogo.alt = title.name;
+
+// meta
+titleStatus.innerText = title.status;
+titleYear.innerText = title.year;
+titleMpaa.innerText = title.mpaa;
+
+const duration = title.type === "Movie" ? title.duration : (title.seasons + " Seasons");
+titleDuration.innerText = duration;
+
+// popularity
+titlePopularity.innerText = title.popularity;
+
+// synopsis
+titleSynopsis.innerText = title.synopsis;
+
+// cast and crew heading
+/*
+    if the title is a movie, set the crew heading to "Director"
+    else set the heading to "Creator"
+    pulralize() add the 's' suffix to each headings
+*/
+const heading = title.type === "Movie" ?
+    pluralize("Director", title.crew) :
+    pluralize("Creator", title.crew);
+titleCrewHeading.innerText = heading;
+
+// cast and crew names
+titleCast.innerText = title.cast.join(", ");
+titleCrew.innerText = title.crew.join(", ");
+
+// genres
+titleGenres.innerText = title.genres;
+
+//  *** EVENT HANDLERS ***
+addToListButton.addEventListener("click", function (e) {
+    addToList(title);
+});
+
 myList.addEventListener("click", displayList);
 
-// FUNCTIONS
-// set movie info on load
-(function () {
 
-    // get a random movie from the titles object and update the DOM
-    const randIndex = Math.floor(Math.random() * Math.floor(titles.length));
-    const currentTitleObject = titles[randIndex];
-    // end set random movie to DOM
+// *** FUNCTIONS ***
 
-    // current title
-    const title = currentTitleObject;
-
-    // SET DOM VALUES
-
-    // .screen-container div
-    titleBg.style.background = `url(./img/${title.background}) no-repeat right center`;
-    titleBg.style.backgroundSize = "cover";
-
-    // title logo image
-    titleLogo.src = `./img/${title.logo}`;
-    titleLogo.alt = title.name;
-
-    // title meta
-    titleStatus.innerText = title.status;
-    titleYear.innerText = title.year;
-    titleMpaa.innerText = title.mpaa;
-
-    const duration = title.type === "Movie" ? title.duration : (title.seasons + " Seasons");
-    titleDuration.innerText = duration;
-
-    // title popularity
-    titlePopularity.innerText = title.popularity;
-
-    // title synopsis
-    titleSynopsis.innerText = title.synopsis;
-
-    /*
-        if the title is a movie, set the crew heading to "Director"
-        else set the heading to "Creator"
-        ...but call the pluralize function
-    */
-    const heading = title.type === "Movie" ?
-        pluralize("Director", title.crew) :
-        pluralize("Creator", title.crew);
-    titleCrewHeading.innerText = heading;
-
-    titleCast.innerText = title.cast.join(", ");
-    titleCrew.innerText = title.crew.join(", ");
-
-    titleGenres.innerText = title.genres;
-
-    addToListButton.addEventListener("click", function (e) {
-        // pass the current title object to addToList function
-        addToList(title);
-    });
-
-    // FUNCTIONS
-    /*
-        pluralize() add the 's' suffix to the
-        "Director" and "Creator" headings if the array lenght is > 1
-        ex: pluralize("Creator", title.crew)
-        - title.crew is an array
-    */
-    function pluralize(peopleHeading, people) {
-        if (people.length > 1) {
-            return peopleHeading + "s: ";
-        } else {
-            return peopleHeading + ": ";
-        }
+/*
+    pluralize() addS the 's' suffix
+    to "Director" and "Creator" headings
+    if the peopleArray is > 1
+    ex. call: pluralize("Creator", title.crew)
+    - title.crew is an array
+*/
+function pluralize(peopleHeading, peopleArray) {
+    if (peopleArray.length > 1) {
+        return peopleHeading + "s: ";
+    } else {
+        return peopleHeading + ": ";
     }
-
-})();
+}
 
 function addToList(title) {
-
-
-    // check to localstorage has titles
+    // check if localstorage has data
     let myList;
     if (localStorage.getItem("myList") === null) {
         myList = [];
     } else {
         myList = JSON.parse(localStorage.getItem("myList"))
     }
-    // push title to myList array
+    // push title object to myList array
     myList.push(title);
 
     // add list to local storage
