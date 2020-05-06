@@ -1,42 +1,4 @@
-const titles = [{
-        id: 1,
-        name: "The Half of it",
-        year: 2020,
-        type: "Movie",
-        mpaa: "PG-13",
-        duration: "1h 45m",
-        popularity: 9,
-        synopsis: "When smart but cash-strapped teen Ellie Chu agrees to write a love letter for a jock, she doesn't expect to become his friend — or fall for his crush.",
-        cast: ["Leah Lewis", "Daniel Diemer"],
-        crew: ["Alice Wu"],
-        genres: "LGBTQ Movies, Teen Movies",
-        status: "New",
-        poster: "the-half-of-it-poster.jpg",
-        background: "the-half-of-it-bg.jpg",
-        logo: "the-half-of-it-logo.png"
-    },
-    {
-        id: 2,
-        name: "Ozark",
-        year: 2017,
-        type: "Series",
-        seasons: 3,
-        mpaa: "TV-MA",
-        duration: "1h 20m",
-        popularity: 1,
-        synopsis: "A financial adviser drags his family from Chicago to the Missouri Ozarks, where he must launder $500 million in five years to appease a drug boss.",
-        cast: ["Jason Bateman", "Laura Linney", "Sofia Hublitz"],
-        crew: ["Bill Dubuque", "Mark Williams"],
-        genres: "TV Dramas",
-        status: "98% Match",
-        poster: "ozark-poster.jpg",
-        background: "ozark-bg.png",
-        logo: "ozark-logo.png"
-    }
-];
-
 document.addEventListener('DOMContentLoaded', () => {
-
     const myList = document.querySelector("#my-list");
     const addToListButton = document.querySelector("#btn-add");
 
@@ -56,54 +18,63 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleCrewHeading = document.querySelector('.crew-info .heading')
     const titleGenres = document.querySelector(".genres");
 
+    // *** FETCH API ***
+    async function fetchData() {
+        const resp = await fetch('https://api.npoint.io/cf0f54443dac99ea2286')
+        let data = await resp.json();
+        data = renderTitles(data.titles);
+    }
 
-    // get a random index from the titles array
-    const randIndex = Math.floor(Math.random() * Math.floor(titles.length));
+    function renderTitles(titles) {
+        // get a random index from the titles array
+        const randIndex = Math.floor(Math.random() * Math.floor(titles.length));
 
-    // save the chosen title in the title variable
-    const title = titles[randIndex];
+        // save the chosen title in the title variable
+        const title = titles[randIndex];
 
-    // *** SET DOM VALUES ***
+        // *** SET DOM VALUES ***
 
-    // .screen-container div
-    titleBg.style.background = `url(./img/${title.background}) no-repeat right center`;
-    titleBg.style.backgroundSize = "cover";
+        // .screen-container div
+        titleBg.style.background = `url(./img/${title.background}) no-repeat right center`;
+        titleBg.style.backgroundSize = "cover";
 
-    // logo image
-    titleLogo.src = `./img/${title.logo}`;
-    titleLogo.alt = title.name;
+        // logo image
+        titleLogo.src = `./img/${title.logo}`;
+        titleLogo.alt = title.name;
 
-    // meta
-    titleStatus.innerText = title.status;
-    titleYear.innerText = title.year;
-    titleMpaa.innerText = title.mpaa;
+        // meta
+        titleStatus.innerText = title.status;
+        titleYear.innerText = title.year;
+        titleMpaa.innerText = title.mpaa;
 
-    const duration = title.type === "Movie" ? title.duration : (title.seasons + " Seasons");
-    titleDuration.innerText = duration;
+        const duration = title.type === "Movie" ? title.duration : (title.seasons + " Seasons");
+        titleDuration.innerText = duration;
 
-    // popularity
-    titlePopularity.innerText = title.popularity;
+        // popularity
+        titlePopularity.innerText = title.popularity;
 
-    // synopsis
-    titleSynopsis.innerText = title.synopsis;
+        // synopsis
+        titleSynopsis.innerText = title.synopsis;
 
-    // cast and crew heading
-    /*
-        if the title is a movie, set the crew heading to "Director"
-        else set the heading to "Creator"
-        pulralize() add the 's' suffix to each headings
-    */
-    const heading = title.type === "Movie" ?
-        pluralize("Director", title.crew) :
-        pluralize("Creator", title.crew);
-    titleCrewHeading.innerText = heading;
+        // cast and crew heading
+        /*
+            if the title is a movie, set the crew heading to "Director"
+            else set the heading to "Creator"
+            pulralize() add the 's' suffix to each headings
+        */
+        const heading = title.type === "Movie" ?
+            pluralize("Director", title.crew) :
+            pluralize("Creator", title.crew);
+        titleCrewHeading.innerText = heading;
 
-    // cast and crew names
-    titleCast.innerText = title.cast.join(", ");
-    titleCrew.innerText = title.crew.join(", ");
+        // cast and crew names
+        titleCast.innerText = title.cast.join(", ");
+        titleCrew.innerText = title.crew.join(", ");
 
-    // genres
-    titleGenres.innerText = title.genres;
+        // genres
+        titleGenres.innerText = title.genres;
+    }
+    fetchData();
 
     //  *** EVENT HANDLERS ***
     addToListButton.addEventListener("click", function (e) {
