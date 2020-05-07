@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const myList = document.querySelector("#my-list");
+    const myListButton = document.querySelector("#my-list");
     const addToListButton = document.querySelector("#btn-add");
 
     // get DOM elements
     const titleLogo = document.querySelector(".title-logo-img");
-    const titleName = titleLogo.title;
     const titleBg = document.querySelector(".screen-container");
     const titleStatus = document.querySelector(".status");
     const titleYear = document.querySelector(".year");
@@ -84,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    myList.addEventListener("click", displayList);
+    myListButton.addEventListener("click", displayList);
 
 
     // *** FUNCTIONS ***
@@ -114,8 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // if there is, pull it out and add to it
             myList = JSON.parse(localStorage.getItem("myList"))
         }
-        // push title object to myList array
 
+        // check for duplicates
         if (myList.some(function (currentTitle) {
                 return currentTitle.id === title.id
             })) {
@@ -124,6 +123,28 @@ document.addEventListener('DOMContentLoaded', () => {
             myList.push(title);
             localStorage.setItem("myList", JSON.stringify(myList));
             console.log(`"${title.name}" was added to your list`);
+
+            // update button text
+            const btnAdd = document.querySelector("#btn-add .icon-text");
+            btnAdd.innerText = "Remove from My List";
+
+            // hide the vertical bar from the + icon
+            const verticalBar = document.querySelector(".icon-add .bar-v");
+            verticalBar.classList.add("hide");
+        }
+    }
+
+    function updateAddButton() {
+        if (myList.some(function (currentTitle) {
+                return currentTitle.id === title.id
+            })) {
+            // update button text
+            const btnAdd = document.querySelector("#btn-add .icon-text");
+            btnAdd.innerText = "Remove from My List";
+
+            // hide the vertical bar from the + icon
+            const verticalBar = document.querySelector(".icon-add .bar-v");
+            verticalBar.classList.add("hide");
         }
     }
 
