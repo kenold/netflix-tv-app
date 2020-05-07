@@ -78,10 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
             addToList(title);
         });
 
+        //  update 'Add to List' button if current title is already in the list
+        updateAddButton(title);
+
     } // end renderTitles()
     fetchData();
-
-
 
     myListButton.addEventListener("click", displayList);
 
@@ -134,7 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function updateAddButton() {
+    function updateAddButton(title) {
+        console.log("update button function was called");
+        myList = JSON.parse(localStorage.getItem("myList"))
         if (myList.some(function (currentTitle) {
                 return currentTitle.id === title.id
             })) {
