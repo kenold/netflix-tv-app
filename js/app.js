@@ -104,19 +104,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addToList(title) {
-        // check if localstorage has data
         let myList;
+
+        // check if there is data in local storage
         if (localStorage.getItem("myList") === null) {
+            // if not, set an empty array
             myList = [];
         } else {
+            // if there is, pull it out and add to it
             myList = JSON.parse(localStorage.getItem("myList"))
         }
         // push title object to myList array
-        myList.push(title);
 
-        // add list to local storage
-        localStorage.setItem("myList", JSON.stringify(myList));
-        console.log(`"${title.name}" was added to your list`);
+        if (myList.some(function (currentTitle) {
+                return currentTitle.id === title.id
+            })) {
+            console.log(`"${title.name}" is already in your list.`);
+        } else {
+            myList.push(title);
+            localStorage.setItem("myList", JSON.stringify(myList));
+            console.log(`"${title.name}" was added to your list`);
+        }
     }
 
     function displayList() {
