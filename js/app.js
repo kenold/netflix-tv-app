@@ -1,8 +1,15 @@
 import * as list from "./list.js";
 
 document.addEventListener('DOMContentLoaded', () => {
+    // BUTTONS
     const myListButton = document.querySelector("#my-list");
     const addToListButton = document.querySelector("#btn-add");
+    const playButtonText = document.querySelector("#btn-play .icon-text");
+
+    // display "My List" content
+    myListButton.addEventListener("click", list.display);
+    //playButton.addEventListener("click", updatePlayButton);
+
 
     // get DOM elements
     const titleLogo = document.querySelector(".title-logo-img");
@@ -48,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         titleYear.innerText = title.year;
         titleMpaa.innerText = title.mpaa;
 
-        const duration = title.type === "Movie" ? title.duration : (title.seasons + " Seasons");
+        const duration = (title.type === "Movie") ? title.duration : (title.seasons + " Seasons");
         titleDuration.innerText = duration;
 
         // popularity
@@ -63,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             else set the heading to "Creator"
             pulralize() add the 's' suffix to each headings
         */
-        const heading = title.type === "Movie" ?
+        const heading = (title.type === "Movie") ?
             pluralize("Director", title.crew) :
             pluralize("Creator", title.crew);
         titleCrewHeading.innerText = heading;
@@ -75,6 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // genres
         titleGenres.innerText = title.genres;
 
+        // update play button text based on title type
+        playButtonText.innerText = (title.type === "Movie") ? "Play" : "Play Season 1: Episode 1";
+
         //  *** EVENT HANDLERS ***
         addToListButton.addEventListener("click", function (e) {
             list.add(title);
@@ -84,9 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateAddButton(title.id);
 
     } // end renderTitles()
-
-    // display "My List" content
-    myListButton.addEventListener("click", list.display);
 
 
     // *** FUNCTIONS ***
