@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         //  update 'Add to List' button if current title is already in the list
-        updateAddButton(title);
+        updateAddButton(title.id);
 
     } // end renderTitles()
 
@@ -107,10 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // addtolist()
 
-    function updateAddButton(title) {
+    function updateAddButton(id) {
         const myList = JSON.parse(localStorage.getItem("myList"))
         if (myList.some(function (currentTitle) {
-                return currentTitle.id === title.id
+                return currentTitle.id === id
             })) {
             // update button text
             const btnAdd = document.querySelector("#btn-add .icon-text");
