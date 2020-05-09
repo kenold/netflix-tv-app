@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const myListButton = document.querySelector("#my-list");
     const addToListButton = document.querySelector("#btn-add");
     const playButtonText = document.querySelector("#btn-play .icon-text");
+    const episodeButton = document.querySelector("#btn-episodes");
 
     // display "My List" content
     myListButton.addEventListener("click", list.display);
@@ -41,6 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = titles[randIndex];
 
         // *** SET DOM VALUES ***
+
+        // hide episode button
+        // title.type === "Movie" ?
 
         // .screen-container div
         titleBg.style.background = `url(./img/${title.background}) no-repeat right center`;
