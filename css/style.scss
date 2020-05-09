@@ -56,12 +56,8 @@ nav {
     padding: 10px;
     transition: border-color 200ms;
 
-    &:hover {
-        border-color: #fff;
-    }
-
     &:focus {
-        outline: 1px solid red;
+        outline: 1px solid #fff;
     }
 }
 
@@ -162,7 +158,6 @@ nav {
         padding: 5px;
         width: 60%;
 
-        &:hover,
         &:focus {
             outline: 1px solid #fff;
             color: #fff;

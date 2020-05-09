@@ -60,12 +60,8 @@ nav {
   transition: border-color 200ms;
 }
 
-.nav-item:hover {
-  border-color: #fff;
-}
-
 .nav-item:focus {
-  outline: 1px solid red;
+  outline: 1px solid #fff;
 }
 
 .screen-container {
@@ -172,7 +168,7 @@ nav {
   width: 60%;
 }
 
-.button-item:hover, .button-item:focus {
+.button-item:focus {
   outline: 1px solid #fff;
   color: #fff;
 }
