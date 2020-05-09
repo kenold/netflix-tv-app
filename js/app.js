@@ -1,3 +1,5 @@
+import * as list from "./list.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     const myListButton = document.querySelector("#my-list");
     const addToListButton = document.querySelector("#btn-add");
@@ -17,12 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleCrewHeading = document.querySelector('.crew-info .heading')
     const titleGenres = document.querySelector(".genres");
 
-    // *** FETCH API ***
     async function fetchData() {
         const resp = await fetch('https://api.npoint.io/cf0f54443dac99ea2286')
         let jsonData = await resp.json();
         jsonData = renderTitles(jsonData.titles);
     }
+    fetchData();
 
     function renderTitles(titles) {
         // get a random index from the titles array
@@ -75,16 +77,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //  *** EVENT HANDLERS ***
         addToListButton.addEventListener("click", function (e) {
-            addToList(title);
+            list.add(title);
         });
 
         //  update 'Add to List' button if current title is already in the list
         updateAddButton(title);
 
     } // end renderTitles()
-    fetchData();
 
-    myListButton.addEventListener("click", displayList);
+    // display "My List" content
+    myListButton.addEventListener("click", list.display);
 
 
     // *** FUNCTIONS ***
@@ -103,41 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function addToList(title) {
-        let myList;
-
-        // check if there is data in local storage
-        if (localStorage.getItem("myList") === null) {
-            // if not, set an empty array
-            myList = [];
-        } else {
-            // if there is, pull it out and add to it
-            myList = JSON.parse(localStorage.getItem("myList"))
-        }
-
-        // check for duplicates
-        if (myList.some(function (currentTitle) {
-                return currentTitle.id === title.id
-            })) {
-            console.log(`"${title.name}" is already in your list.`);
-        } else {
-            myList.push(title);
-            localStorage.setItem("myList", JSON.stringify(myList));
-            console.log(`"${title.name}" was added to your list`);
-
-            // update button text
-            const btnAdd = document.querySelector("#btn-add .icon-text");
-            btnAdd.innerText = "Remove from My List";
-
-            // hide the vertical bar from the + icon
-            const verticalBar = document.querySelector(".icon-add .bar-v");
-            verticalBar.classList.add("hide");
-        }
-    }
+    // addtolist()
 
     function updateAddButton(title) {
-        console.log("update button function was called");
-        myList = JSON.parse(localStorage.getItem("myList"))
+        const myList = JSON.parse(localStorage.getItem("myList"))
         if (myList.some(function (currentTitle) {
                 return currentTitle.id === title.id
             })) {
@@ -149,14 +120,5 @@ document.addEventListener('DOMContentLoaded', () => {
             const verticalBar = document.querySelector(".icon-add .bar-v");
             verticalBar.classList.add("hide");
         }
-    }
-
-    function displayList() {
-        console.log("MY LIST");
-
-        const allTitles = JSON.parse(localStorage.getItem("myList"));
-        allTitles.forEach(function (title) {
-            console.log("- " + title.name);
-        })
     }
 })
