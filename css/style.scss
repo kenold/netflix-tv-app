@@ -186,6 +186,36 @@ nav {
         border-left: 20px solid $color-light;
     }
 
+    &-episodes {
+        width: 20px;
+        position: relative;
+
+        span {
+            background-color: $color-light;
+            display: block;
+            width: 15px;
+            height: 10px;
+            position: absolute;
+            border: 1px solid #444;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        span:first-child {
+            left: 6px;
+            top: -4px;
+        }
+
+        span:nth-child(2) {
+            left: 3px;
+        }
+
+        span:last-child {
+            margin-top: 4px;
+            left: 0;
+        }
+    }
+
     &-more {
         display: grid;
         grid-template-columns: 1fr 1fr;

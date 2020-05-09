@@ -194,6 +194,37 @@ nav {
   border-left: 20px solid #bdbdbd;
 }
 
+.icon-episodes {
+  width: 20px;
+  position: relative;
+}
+
+.icon-episodes span {
+  background-color: #bdbdbd;
+  display: block;
+  width: 15px;
+  height: 10px;
+  position: absolute;
+  border: 1px solid #444;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.icon-episodes span:first-child {
+  left: 6px;
+  top: -4px;
+}
+
+.icon-episodes span:nth-child(2) {
+  left: 3px;
+}
+
+.icon-episodes span:last-child {
+  margin-top: 4px;
+  left: 0;
+}
+
 .icon-more {
   display: -ms-grid;
   display: grid;
