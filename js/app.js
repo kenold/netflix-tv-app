@@ -80,12 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
         /*
             if title is a movie, set the crew heading to "Director"
             else set the heading to "Creator"
-            pulralize() add the 's' suffix to each heading
+            add the 's' suffix to each heading if crew is more than 1
         */
-        const heading = (title.type === "Movie") ?
-            pluralize("Director", title.crew) :
-            pluralize("Creator", title.crew);
-        titleCrewHeading.innerText = heading;
+        const heading = (title.type === "Movie") ? "Director" : "Creator";
+        titleCrewHeading.innerText = `${heading}${title.crew.length > 1 ? "s:" : ":"}`;
 
         // cast and crew names
         titleCast.innerText = title.cast.join(", ");
@@ -107,30 +105,14 @@ document.addEventListener('DOMContentLoaded', () => {
             list.add(title);
         });
 
-        //  update 'Add to List' button if current title is already in the list
+        /*  change 'Add to List' button text
+        if current the title is already in the list */
         updateAddButton(title.id);
 
     } // end renderTitles()
 
 
     // *** FUNCTIONS ***
-    /*
-        pluralize() addS the 's' suffix
-        to "Director" and "Creator" headings
-        if the peopleArray is > 1
-        ex. call: pluralize("Creator", title.crew)
-        - title.crew is an array
-    */
-    function pluralize(peopleHeading, peopleArray) {
-        if (peopleArray.length > 1) {
-            return peopleHeading + "s: ";
-        } else {
-            return peopleHeading + ": ";
-        }
-    }
-
-    // addtolist()
-
     function updateAddButton(id) {
         const myList = JSON.parse(localStorage.getItem("myList"))
         if (myList.some(function (currentTitle) {
