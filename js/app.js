@@ -1,4 +1,9 @@
 import * as list from "./list.js";
+import {
+    titles
+} from "./data.js";
+
+const DEVELOPMENT = true;
 
 document.addEventListener('DOMContentLoaded', () => {
     // BUTTONS
@@ -27,12 +32,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleCrewHeading = document.querySelector('.crew-info .heading')
     const titleGenres = document.querySelector(".genres");
 
-    async function fetchData() {
-        const resp = await fetch('https://api.npoint.io/cf0f54443dac99ea2286')
-        let jsonData = await resp.json();
-        jsonData = renderTitles(jsonData.titles);
+    // fetch local data if dev mode is true
+    // else fetch real API
+    if (DEVELOPMENT) {
+        renderTitles(titles);
+    } else {
+        async function fetchData() {
+            const resp = await fetch('https://api.npoint.io/cf0f54443dac99ea2286')
+            let jsonData = await resp.json();
+            jsonData = renderTitles(jsonData.titles);
+        }
+        fetchData();
     }
-    fetchData();
 
     function renderTitles(titles) {
         // get a random index from the titles array
