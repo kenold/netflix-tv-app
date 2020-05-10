@@ -54,9 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // *** SET DOM VALUES ***
 
-        // hide episode button
-        // title.type === "Movie" ?
-
         // .screen-container div
         titleBg.style.background = `url(./img/${title.background}) no-repeat right center`;
         titleBg.style.backgroundSize = "cover";
@@ -81,9 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // cast and crew heading
         /*
-            if the title is a movie, set the crew heading to "Director"
+            if title is a movie, set the crew heading to "Director"
             else set the heading to "Creator"
-            pulralize() add the 's' suffix to each headings
+            pulralize() add the 's' suffix to each heading
         */
         const heading = (title.type === "Movie") ?
             pluralize("Director", title.crew) :
@@ -101,6 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
         playButtonText.innerText = (title.type === "Movie") ? "Play" : "Play Season 1: Episode 1";
 
         //  *** EVENT HANDLERS ***
+
+        // show the 'Episodes and more" button for series only
+        if (title.type != "Series") {
+            episodeButton.classList.add("hide");
+        }
         addToListButton.addEventListener("click", function (e) {
             list.add(title);
         });
