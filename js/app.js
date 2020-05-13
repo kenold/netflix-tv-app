@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // *** SET DOM VALUES ***
 
         // .screen-container div
-        titleBg.style.background = `url(./img/${title.background}) no-repeat right center`;
+        titleBg.style.background = `url(./img/${title.background}) no-repeat right center fixed`;
         titleBg.style.backgroundSize = "cover";
 
         // logo image
