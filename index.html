@@ -1,131 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Netflix TV App | Kenold Beauplan</title>
-    <link rel="stylesheet" href="./css/reset.min.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
 
-  <body>
-    <div class="screen-container">
-      <div class="title">
-        <header class="title-header">
-          <img src="" alt="" class="title-logo-img" />
-          <nav class="nav" id="nav-list">
-            <button class="nav-item" id="my-list">My List</button>
-          </nav>
-        </header>
-        <main class="title-body">
-          <section class="title-meta">
-            <span class="status"></span>
-            <span class="year"></span>
-            <span class="mpaa"></span>
-            <span class="duration"></span>
-            <span class="audio">5.1</span>
-          </section>
-          <section class="title-popularity">
-            <div class="top-box">Top<br />10</div>
-            <p class="popularity-text">
-              #<span class="popularity-number"></span> in the U.S. Today
-            </p>
-          </section>
-          <section class="title-synopsis">
-            <p class="synopsis"></p>
-          </section>
-          <section class="title-people-genres">
-            <div class="cast-info">
-              <span class="heading">Cast:</span>
-              <span class="cast"></span>
-            </div>
-            <div class="crew-info">
-              <span class="heading"></span>
-              <span class="crew"></span>
-            </div>
-            <div class="genres"></div>
-          </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netflix TV App | Kenold Beauplan</title>
+  <link rel="stylesheet" href="./css/reset.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
 
-          <section class="buttons-container">
-            <div class="button-list">
-              <button class="button-item" id="btn-play">
-                <i class="icon icon-play"></i>
-                <span class="icon-text">Play</span>
-              </button>
+<body>
+  <div class="screen-container">
+    <div class="title">
+      <header class="title-header">
+        <img src="" alt="" class="title-logo-img" />
+        <nav class="nav" id="nav-list">
+          <button class="nav-item" id="my-list">My List</button>
+        </nav>
+      </header>
+      <main class="title-body">
+        <section class="title-meta">
+          <span class="status"></span>
+          <span class="year"></span>
+          <span class="mpaa"></span>
+          <span class="duration"></span>
+          <span class="audio">5.1</span>
+        </section>
+        <section class="title-popularity">
+          <div class="top-box">Top<br />10</div>
+          <p class="popularity-text">
+            #<span class="popularity-number"></span> in the U.S. Today
+          </p>
+        </section>
+        <section class="title-synopsis">
+          <p class="synopsis"></p>
+        </section>
+        <section class="title-people-genres">
+          <div class="cast-info">
+            <span class="heading">Cast:</span>
+            <span class="cast"></span>
+          </div>
+          <div class="crew-info">
+            <span class="heading"></span>
+            <span class="crew"></span>
+          </div>
+          <div class="genres"></div>
+        </section>
 
-              <button class="button-item" id="btn-episodes">
-                <div class="icon icon-episodes">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <span class="icon-text">Episodes and more</span>
-              </button>
+        <section class="buttons-container">
+          <div class="button-list">
+            <button class="button-item" id="btn-play">
+              <i class="icon icon-play"></i>
+              <span class="icon-text">Play</span>
+            </button>
 
-              <button class="button-item" id="btn-more">
-                <div class="icon icon-more">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <span class="icon-text">More like this</span>
-              </button>
-
-              <button class="button-item" id="btn-subtitles">
-                <i class="icon icon-subtitles"></i>
-                <span class="icon-text">Audio and subtitles</span>
-              </button>
-
-              <button class="button-item" id="btn-add">
-                <div class="icon icon-add">
-                  <div class="bar-v"></div>
-                  <div class="bar-h"></div>
-                </div>
-                <span class="icon-text">Add to My List</span>
-              </button>
-
-              <div id="btn-rate">
-                <button class="button-item" id="btn-rate-up">
-                  <i class="icon icon-rate-up">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M19.396 20.708c-.81-.062-.733-.812.031-.953 1.269-.234 1.827-.914 1.827-1.543 0-.529-.396-1.022-1.098-1.181-.837-.189-.664-.757.031-.812 1.132-.09 1.688-.764 1.688-1.41 0-.565-.425-1.108-1.261-1.22-.857-.115-.578-.734.031-.922.521-.16 1.354-.5 1.354-1.51 0-.672-.5-1.562-2.271-1.49-1.228.05-3.667-.198-4.979-.885.907-3.657.689-8.782-1.687-8.782-1.594 0-1.896 1.807-2.375 3.469-1.718 5.969-5.156 7.062-8.687 7.603v9.928c6.688 0 8.5 3 13.505 3 3.199 0 4.852-1.735 4.852-2.666-.001-.334-.273-.572-.961-.626z"
-                      />
-                    </svg>
-                  </i>
-                </button>
-                <button id="btn-rate-down" class="button-item">
-                  <i class="icon icon-rate-down">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M19.396 3.292c-.811.062-.734.812.031.953 1.268.234 1.826.914 1.826 1.543 0 .529-.396 1.022-1.098 1.181-.837.189-.664.757.031.812 1.133.09 1.688.764 1.688 1.41 0 .565-.424 1.108-1.26 1.22-.857.115-.578.734.031.922.521.16 1.354.5 1.354 1.51 0 .672-.5 1.562-2.271 1.49-1.228-.05-3.666.198-4.979.885.907 3.657.689 8.782-1.687 8.782-1.594 0-1.896-1.807-2.375-3.469-1.718-5.969-5.156-7.062-8.687-7.603v-9.928c6.688 0 8.5-3 13.505-3 3.198 0 4.852 1.735 4.852 2.666-.001.334-.273.572-.961.626z"
-                      />
-                    </svg>
-                  </i>
-                </button>
-                <!-- <span class="icon-text">Rate this title</span> -->
+            <button class="button-item" id="btn-episodes">
+              <div class="icon icon-episodes">
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
-            </div>
-          </section>
-        </main>
-      </div>
-      <!-- /.title -->
+              <span class="icon-text">Episodes and more</span>
+            </button>
+
+            <button class="button-item" id="btn-more">
+              <div class="icon icon-more">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <span class="icon-text">More like this</span>
+            </button>
+
+            <button class="button-item" id="btn-subtitles">
+              <i class="icon icon-subtitles"></i>
+              <span class="icon-text">Audio and subtitles</span>
+            </button>
+
+            <button class="button-item" id="btn-add">
+              <div class="icon icon-add">
+                <div class="bar-v"></div>
+                <div class="bar-h"></div>
+              </div>
+              <span class="icon-text">Add to My List</span>
+            </button>
+          </div>
+        </section>
+      </main>
     </div>
-    <script type="module" src="./js/app.js"></script>
-  </body>
+    <!-- /.title -->
+  </div>
+  <script type="module" src="./js/app.js"></script>
+</body>
+
 </html>
