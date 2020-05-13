@@ -101,9 +101,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (title.type != "Series") {
             episodeButton.classList.add("hide");
         }
+
+        // onclick, add title to list
         addToListButton.addEventListener("click", function (e) {
             list.add(title);
         });
+
+        // rating buttons
+        const rateButtonDown = document.querySelector("#btn-rate-down");
+        const rateButtonUp = document.querySelector("#btn-rate-up");
 
         /*  change 'Add to List' button text
         if current the title is already in the list */
