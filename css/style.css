@@ -23,12 +23,6 @@ button {
   color: #bdbdbd;
   cursor: pointer;
   font-size: inherit;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 button:focus {
@@ -47,8 +41,25 @@ nav {
   margin-top: 56px;
 }
 
+.outline {
+  color: #fff;
+  outline: 1px solid #fff;
+}
+
 .hide {
-  display: none;
+  display: none !important;
+}
+
+.show {
+  display: block;
+}
+
+#btn-rate.no-outline {
+  border: 0;
+}
+
+#btn-rate.no-outline:hover {
+  outline: none;
 }
 
 .nav-item {
@@ -163,6 +174,12 @@ nav {
 }
 
 .button-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 10px;
   padding: 5px;
   width: 60%;
@@ -176,6 +193,25 @@ nav {
 .button-item span {
   font-size: 1.8rem;
   font-weight: 500;
+}
+
+#btn-rate {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: 10% 10%;
+      grid-template-columns: 10% 10%;
+}
+
+#btn-rate .icon {
+  margin-right: 0;
+}
+
+#btn-rate .icon-text {
+  margin-bottom: 15px;
+  padding: 10px 0;
 }
 
 .icon {
@@ -282,7 +318,8 @@ nav {
           transform: translateX(-50%);
 }
 
-.icon-rate-up svg {
+.icon-rate-up svg,
+.icon-rate-down svg {
   fill: #bdbdbd;
 }
 

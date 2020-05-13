@@ -25,8 +25,6 @@ button {
     color: $color-light;
     cursor: pointer;
     font-size: inherit;
-    display: flex;
-    align-items: center;
 
     &:focus {
         outline: none;
@@ -45,9 +43,30 @@ nav {
     margin-top: 56px;
 }
 
-.hide {
-    display: none;
+// utility classes
+.outline {
+    color: #fff;
+    //padding: 5px;
+    outline: 1px solid #fff;
 }
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block;
+}
+
+#btn-rate.no-outline {
+    border: 0;
+
+    &:hover {
+        outline: none;
+    }
+}
+
+// end utility classes
 
 .nav-item {
     border: 1px solid $color-light;
@@ -155,6 +174,8 @@ nav {
 
 .button {
     &-item {
+        display: flex;
+        align-items: center;
         margin-bottom: 10px;
         padding: 5px;
         width: 60%;
@@ -169,6 +190,21 @@ nav {
             font-size: 1.8rem;
             font-weight: 500;
         }
+    }
+}
+
+#btn-rate {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 10% 10%;
+
+    .icon {
+        margin-right: 0;
+    }
+
+    .icon-text {
+        margin-bottom: 15px;
+        padding: 10px 0;
     }
 }
 
@@ -267,7 +303,8 @@ nav {
         }
     }
 
-    &-rate-up svg {
+    &-rate-up svg,
+    &-rate-down svg {
         fill: $color-light;
     }
 }
